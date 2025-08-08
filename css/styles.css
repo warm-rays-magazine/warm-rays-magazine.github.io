@@ -1,0 +1,893 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Press+Start+2P&family=Rubik+Iso&display=swap');
+
+:root {
+    --primary: #FF9F1C;
+    --secondary: #2EC4B6;
+    --bg: #0A1931;
+    --background: linear-gradient(135deg, #0A1931 0%, #4A00E0 100%);
+    --text: #F8F7F9;
+    --neon: #FF206E;
+    --gradient: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%);
+    --font-arabic: 'Amiri Quran', serif;
+    --font-cyber: 'Orbitron', sans-serif;
+    --gradus: linear-gradient(90deg,rgba(200, 40, 224, 1) 0%, rgba(242, 87, 87, 1) 50%, rgba(237, 221, 83, 1) 100%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none !important;
+}
+
+html{
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-arabic);
+    min-height: 100vh !important;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.no-scroll { 
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    margin-left: 20vw;
+}
+
+.logo {
+    height: 65px;
+    transition: transform 0.3s;
+    /* Добавим отступ если нужно */
+    margin: 0 20px;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: var(--gradient) !important;
+    position: relative;
+    z-index: 3000;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    gap: 20px;
+    font-size: 2rem;
+    box-sizing: border-box;
+    z-index: 1000;
+    margin-right: 10vw;
+}
+
+.nav-links a {
+    color: var(--text);
+    position: relative;
+    padding: 0.5rem;
+    font-family: var(--font-cyber);
+    font-size: 1.5rem; /* Добавлено для стабильности */
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--neon);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.burger-menu {
+    display: none; /* По умолчанию скрыт */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
+    z-index: 1001;
+}
+
+.burger-line {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: var(--text);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Добавьте в styles.css */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    cursor: pointer;
+}
+
+.warning{
+    color: #ff6010 !important;
+    font-size: 1.19rem;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    line-height: 1.2;
+}
+
+.nav-links.active + .nav-overlay {
+    display: block;
+    opacity: 1;
+}
+/* Главный медиа-запрос для мобильных */
+@media (max-width: 1080px) {
+    /* Скрываем обычное меню на мобильных */
+    .nav-links {
+        display: none !important;
+        margin: 0 !important;
+    }
+    
+     .verses-container {
+        display: block !important;
+    }
+    
+    .verse-card {
+        width: 80% !important;
+        max-width: 100% !important;
+        margin-right: 0 !important;
+        margin-bottom: 30px;
+        float: none;
+        box-sizing: border-box;
+    }
+
+    /* Показываем бургер */
+    .burger-menu {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+    }
+    
+    /* Показываем меню только когда активно */
+    .nav-links.active {
+        display: flex !important;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 280px;
+        background: var(--background);
+        flex-direction: column;
+        padding: 100px 20px 30px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+        justify-content: flex-start;
+        gap: 15px;
+        z-index: 1000;
+        margin: 0 !important;
+    }
+    
+    /* Отступ для логотипа */
+    .logo-link {
+        margin-right: 60px;
+    }
+}
+
+/* Убираем дублирующие стили в других медиа-запросах */
+@media (min-width: 769px) {
+    .tg-link.desktop {
+        display: inline-block;
+    }
+    .tg-link.mobile {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .tg-link.desktop {
+        display: none;
+    }
+    .tg-link.mobile {
+        display: block;
+        margin-top: auto;
+        padding-top: 20px;
+        border-top: 1px solid var(--neon);
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 8px 15px;
+    }
+    .logo {
+        height: 50px !important;
+    }
+}
+
+
+.tg-icon {
+    width: 32px;
+    filter: invert(1);
+    transition: transform 0.3s;
+}
+
+.tg-icon:hover {
+    transform: rotate(15deg) scale(1.2);
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    background: var(--gradient);
+    padding: 3rem 2rem;
+    margin-top: auto; /* Заменили фиксированный margin-top */
+    border-top: 2px solid var(--neon);
+    width: 100%;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.5rem; /* Уменьшили расстояние между ссылками */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.footer-links a {
+    color: var(--text);
+    font-family: var(--font-cyber);
+    font-size: 1.1rem;
+    position: relative;
+    padding: 0.5rem 1rem;
+}
+
+.footer-links a::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--neon);
+    transition: width 0.3s;
+}
+
+.footer-links a:hover::before {
+    width: 100%;
+}
+
+.grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    padding: 20px;
+}
+
+.article-card {
+    display: block;
+    position: relative;
+    padding: 24px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #333;
+    overflow: hidden;
+}
+
+/* Анимация при наведении */
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Анимация при нажатии */
+.article-card:active {
+    transform: scale(0.97);
+}
+
+/* Декоративная полоса */
+.cyber-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+    opacity: 0.8;
+}
+
+.cyber-button {
+    display: flex; /* Используем flex для идеального центрирования */
+    align-items: center;
+    justify-content: center;
+    min-height: 44px; /* Минимальная высота для тач-интерфейсов */
+    padding: 12px 24px; /* Лучше использовать padding вместо фиксированной высоты */
+    width: 100%; /* Занимает всю ширину контейнера */
+    max-width: 300px; /* Максимальная ширина для десктопов */
+    margin: 0 auto; /* Центрирование кнопки */
+    
+    text-decoration: none;
+    color: #e0bdb6;
+    font-weight: bold;
+    font-size: clamp(14px, 3.5vw, 18px); /* Адаптивный размер текста */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    
+    border: 2px solid #000;
+    box-shadow: 
+        4px 4px 0 #000,
+        0 0 10px rgba(255, 160, 98, 0.8);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box; /* Важно для правильного расчета размеров */
+
+    margin-bottom: 8vh;
+}
+
+.cyber-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 
+        6px 6px 0 #000,
+        0 0 15px rgba(255, 160, 98, 1);
+    transform: translate(-2px, -2px);
+}
+
+.cyber-button:active {
+    transform: translate(4px, 4px);
+    box-shadow: 
+        0 0 0 #000,
+        0 0 20px rgba(255, 160, 98, 1);
+}
+
+/* Глитч-эффект */
+.cyber-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: #e0bdb6;
+    transform: skewX(-15deg);
+    transition: all 0.6s ease;
+}
+
+.cyber-button:hover::before {
+    left: 150%;}
+
+.article-name {
+    margin: 0 0 12px 0;
+    font-size: 1.4em;
+    color: #2c3e50;
+}
+
+.button-container{
+    display: flex;
+    margin-top: 2vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.article-descr {
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.5;
+    color: #666;
+}
+
+/* Эффект подложки */
+.article-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% -20%, rgba(78, 205, 196, 0.1), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.article-card:hover::after {
+    opacity: 1;
+}
+
+.grid {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: 1fr;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+
+.issue-card {
+    position: relative;
+    padding: 2rem;
+    background: linear-gradient(145deg, #f8f9fa, #ffffff);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    overflow: hidden;
+    cursor: pointer;
+    margin: 1vw;
+}
+
+.issue-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.4),
+        transparent
+    );
+    transition: 0.6s;
+}
+
+.issue-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+}
+
+.issue-card:hover::before {
+    left: 100%;
+}
+
+.issue-card:active {
+    transform: scale(0.98);
+}
+
+.issue-card h3 {
+    color: #2c3e50;
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.issue-card p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0 0 1.5rem 0;
+    opacity: 0.9;
+}
+
+.issue-card a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Остальные стили */
+    padding: 10px 25px;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    background-color: var(--bg);
+}
+
+.issue-card:hover a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: blanchedalmond;
+    padding-right: 5px;
+    background-image: var(--gradus);
+    padding: 10px 25px;
+    border-radius: 4px;
+
+}
+
+.issue-card:hover a::after {
+    transform: translateX(3px);
+}
+
+.note {
+    text-align: center;
+    margin: 3rem auto;
+    color: #666;
+    font-style: italic;
+    max-width: 600px;
+    padding: 0 20px;
+}
+
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #ff7f50;
+    margin-bottom: 2rem;
+    font-style: italic;
+    font-size: 2rem;
+    max-width: 600px;
+    line-height: 1.3;
+    text-align: center;
+}
+
+#contact-form {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px 20px;
+    border: 2px solid #4a4a4a;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    border-color: #ff7f50;
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 127, 80, 0.3);
+}
+
+button[type="submit"] {
+    background: linear-gradient(45deg, #ff7f50, #ff6b6b);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 127, 80, 0.4);
+}
+
+.note {
+    margin-top: 2rem;
+    max-width: 500px;
+    color: #888;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+
+
+.cyber-article{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    text-align: left;
+}
+
+.article-text{
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    text-indent: 2em;
+}
+
+.iwanttodie{
+    margin-right: 20vw;
+    margin-left: 20vw;
+    line-height: 1.1;
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: italic;
+    text-indent: 2em;
+    color: #5c5c5c;
+}
+
+/* Импорт шрифтов */
+/* Импорт шрифтов */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+
+/* Базовые стили карточки */
+.poem {
+    background: linear-gradient(135deg, #0d0d0d 0%, #1a1a2e 100%);
+    border: 2px solid #ffa062;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px 0;
+    box-shadow: 
+        0 0 10px rgba(255, 160, 98, 0.3),
+        0 0 20px rgba(0, 0, 0, 0.5) inset;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    break-inside: avoid-column; /* Предотвращает разрыв на колонки */
+}
+
+/* Заголовок стиха */
+.name {
+    font-family: 'Orbitron', sans-serif;
+    color: #ffa062;
+    font-size: 1.4rem; /* Уменьшен размер для мобильных */
+    text-shadow: 0 0 8px rgba(255, 160, 98, 0.7);
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 8px;
+    line-height: 1.3; /* Улучшен межстрочный интервал */
+}
+
+/* Линия под заголовком */
+.name::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ffa062, transparent);
+}
+
+/* Текст стихотворения */
+.poem pre {
+    font-family: 'Share Tech Mono', monospace;
+    color: #e0e0e0;
+    font-size: 1rem; /* Уменьшен размер для мобильных */
+    line-height: 1.5; /* Улучшен межстрочный интервал */
+    text-shadow: 0 0 5px rgba(224, 224, 224, 0.3);
+    white-space: pre-wrap;
+    word-wrap: break-word; /* Перенос длинных слов */
+    margin: 0;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 2px solid #ffa062;
+    overflow: hidden;
+    position: relative;
+    tab-size: 4; /* Для правильного отображения отступов */
+}
+
+/* Анимации (упрощены для мобильных) */
+@keyframes scan {
+    0% { top: -2px; }
+    100% { top: 100%; }
+}
+
+@keyframes flicker {
+    0% { opacity: 0.05; }
+    100% { opacity: 0.15; }
+}
+
+/* Медиа-запросы для мобильных устройств */
+@media (max-width: 768px) {
+    .poem {
+        padding: 12px;
+        margin: 12px 0;
+    }
+    
+    .name {
+        font-size: 1.2rem;
+    }
+    
+    .poem pre {
+        font-size: 0.9rem;
+        padding: 8px;
+        border-left-width: 1px;
+    }
+    
+    /* Упрощенные анимации для мобильных */
+    .poem::before {
+        animation: scan 6s linear infinite; /* Медленнее для экономии батареи */
+    }
+    
+    .poem pre::after {
+        animation: flicker 0.3s infinite alternate; /* Реже мерцает */
+    }
+    
+    /* Отключаем сложные эффекты при наведении */
+    .poem:hover {
+        transform: none;
+        box-shadow: 
+            0 0 10px rgba(255, 160, 98, 0.3),
+            0 0 20px rgba(0, 0, 0, 0.5) inset;
+        border-color: #ffa062;
+    }
+    
+    .poem:hover .name {
+        color: #ffa062;
+        text-shadow: 0 0 8px rgba(255, 160, 98, 0.7);
+    }
+
+    .cyber-button {
+        padding: 10px 16px; /* Уменьшаем отступы */
+        min-height: 40px;
+        max-width: 100%; /* На мобильных занимает всю ширину */
+        font-size: clamp(12px, 4vw, 16px); /* Увеличиваем минимальный размер */
+        box-shadow: 
+            3px 3px 0 #000, /* Уменьшаем тень */
+            0 0 8px rgba(255, 160, 98, 0.8);}
+    
+        .verses-container {
+        display: block !important;
+    }
+    
+    .verse-card {
+        width: 100% !important;
+        margin-right: 0 !important;
+        margin-bottom: 25px;
+        float: none;
+    }
+    
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 480px) {
+    .poem {
+        border-radius: 6px;
+        padding: 10px;
+    }
+    
+    .name {
+        font-size: 1.1rem;
+        padding-bottom: 6px;
+    }
+    
+    .poem pre {
+        font-size: 0.85rem;
+        line-height: 1.4;
+        padding: 6px 8px;
+    }
+    
+    /* Убираем некоторые эффекты для производительности */
+    .poem::before,
+    .poem pre::after {
+        display: none;
+    }
+}
+
+/* Оптимизация для печати */
+@media print {
+    .poem {
+        border: 1px solid #ccc;
+        box-shadow: none;
+        background: white;
+    }
+    
+    .name {
+        color: black;
+        text-shadow: none;
+    }
+    
+    .poem pre {
+        color: black;
+        text-shadow: none;
+        background: none;
+        border-left: 1px solid #eee;
+    }
+    
+    .poem::before,
+    .poem pre::after {
+        display: none;
+    }
+}
+
+.cyber-title{
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.5rem;
+    margin: 1vw;
+    color: #ff6010;
+}
+
+.main-text{
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 1.194rem;
+    color: rgb(199, 247, 247);
+    margin-left: 10vw;
+    margin-right: 10vw;
+    line-height: 1.2;
+}
+
+#contact-form{
+    margin: 20px;
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 4px;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transform: translateX(110%);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.encrypting {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+    border-left: 4px solid #e65100;
+}
+
+.notification.success {
+    background: linear-gradient(135deg, #4caf50, #2e7d32);
+    border-left: 4px solid #1b5e20;
+}
+
+.notification.error {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    border-left: 4px solid #b71c1c;}

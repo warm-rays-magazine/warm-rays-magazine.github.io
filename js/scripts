@@ -1,0 +1,78 @@
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.burger-menu');
+    const nav = document.querySelector('.nav-links');
+    const overlay = document.querySelector('.nav-overlay');
+    const body = document.body;
+    
+    if (!burger || !nav) return;
+    
+    // Функция переключения меню
+    const toggleMenu = () => {
+        const isActive = nav.classList.contains('active');
+        nav.classList.toggle('active', !isActive);
+        burger.classList.toggle('active', !isActive);
+        body.classList.toggle('no-scroll', !isActive);
+    };
+
+    // Функция закрытия меню
+    const closeMenu = () => {
+        nav.classList.remove('active');
+        burger.classList.remove('active');
+        body.classList.remove('no-scroll');
+    };
+
+    // Обработчики событий
+    burger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+    });
+
+    if (overlay) {
+        overlay.addEventListener('click', closeMenu);
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('click', (e) => {
+        if (nav.classList.contains('active') && 
+            !nav.contains(e.target) && 
+            !burger.contains(e.target)) {
+            closeMenu();
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && nav.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.classList.contains('active')) {
+            closeMenu();
+        }
+    });
+});
+
+    const toggleMenu = () => {
+    const isActive = nav.classList.contains('active');
+    nav.classList.toggle('active', !isActive);
+    burger.classList.toggle('active', !isActive);
+    body.classList.toggle('no-scroll', !isActive);
+    
+    // Анимация бургера
+    if (!isActive) {
+        burger.querySelectorAll('.burger-line').forEach((line, index) => {
+            if (index === 0) line.style.transform = 'rotate(45deg) translate(5px, 6px)';
+            if (index === 1) line.style.opacity = '0';
+            if (index === 2) line.style.transform = 'rotate(-45deg) translate(5px, -6px)';
+        });
+    } else {
+        burger.querySelectorAll('.burger-line').forEach(line => {
+            line.style.transform = '';
+            line.style.opacity = '';
+        });
+    }
+};

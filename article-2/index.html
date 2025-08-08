@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Стихотворная мастерская</title>
+<link href="../css/styles.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&amp;family=Orbitron:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        .no-scroll {
+            overflow: hidden;
+        }
+    </style>
+<link href="/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicons/apple-touch-icon-57x57.png" rel="apple-touch-icon" sizes="57x57"/>
+<link href="/favicons/apple-touch-icon-60x60.png" rel="apple-touch-icon" sizes="60x60"/>
+<link href="/favicons/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72"/>
+<link href="/favicons/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76"/>
+<link href="/favicons/apple-touch-icon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/favicons/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"/>
+<link href="/favicons/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120"/>
+<link href="/favicons/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144"/>
+<link href="/favicons/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152"/>
+<link href="/favicons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/favicons/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+<meta content="#ffffff" name="msapplication-TileColor"/>
+<meta content="#ffffff" name="theme-color"/>
+
+<script>
+        // Эффект матрицы для фона
+        function createMatrixEffect() {
+            const chars = '01アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Правильное получение CSS-переменной
+            const neonColor = getComputedStyle(document.documentElement)
+                .getPropertyValue('--neon')
+                .trim();
+    
+            canvas.style.position = 'fixed';
+            canvas.style.top = 0;
+            canvas.style.left = 0;
+            canvas.style.zIndex = -1;
+            document.body.appendChild(canvas);
+    
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            
+            window.addEventListener('resize', resize);
+            resize();
+    
+            const columns = Math.floor(canvas.width / 20);
+            const drops = Array(columns).fill(0);
+    
+            function draw() {
+                ctx.fillStyle = 'rgba(10, 15, 36, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Исправленная строка с использованием переменной
+                ctx.fillStyle = neonColor;
+                ctx.font = '15px monospace';
+    
+                drops.forEach((y, i) => {
+                    const char = chars[Math.floor(Math.random() * chars.length)];
+                    ctx.fillText(char, i * 20, y);
+                    
+                    if (y > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    } else {
+                        drops[i] = y + 20;
+                    }
+                });
+            }
+    
+            const matrixInterval = setInterval(draw, 50);
+    
+            // Очистка при закрытии страницы
+            window.addEventListener('beforeunload', () => {
+                clearInterval(matrixInterval);
+                canvas.remove();
+            });
+        }
+    
+        window.onload = createMatrixEffect;
+    </script>
+</head>
+<body>
+<header>
+<nav>
+<a class="logo-link" href="/">
+<img alt="Логотип" class="logo" src="/img/logo1.webp"/>
+</a>
+<button aria-label="Меню" class="burger-menu">
+<span class="burger-line"></span>
+<span class="burger-line"></span>
+<span class="burger-line"></span>
+</button>
+<div class="nav-links">
+<a href="/">Главная</a>
+<a href="/issues">Выпуски</a>
+<a href="/articles">Статьи</a>
+<a href="/about">О проекте</a>
+<a href="/support">Поддержать</a>
+<a class="tg-link" href="https://t.me/warmraysofdawn" target="_blank">
+<img alt="Telegram" class="tg-icon" src="/img/tg-icon.png"/>
+</a>
+</div>
+</nav>
+</header>
+<main>
+<article class="cyber-article">
+<h2>Стихотворная мастерская Сахара. Как пишутся стихи?</h2>
+<div class="content">
+<p class="article-text">Стихи, как и любые другие литературные произведения, создаются не всегда сразу, зачастую в самый неожиданный момент. Вы могли слышать выражение "Читатель почитывает, а писатель почитывает". Я, как поэт и писатель, полностью с данным выражением согласен. Я прочувстсовал это на себе: иногда приходит мысль и идея, и её надо развить, записать, воплотить. А просто сесть и выдать что-то приятное получается далеко не всегда.</p>
+<p class="article-text">То, о чём я говорил в предыдущем абзаце, называется вдохновением. Я практически уверен, что не каждому знакомо это чувство, хотя могу допустить, что выполняющий только монотонную работу или не занимающийся никаким созиданием, не знает, каково это. Поэтому, опишу, как его ощущаю я: это некое беспокойное чувство переполненности идеей, чувство свободы мышления и огромного потока мыслей. И если вовремя это состояние не поймать, можно упустить шанс написать хорошее стихотворение.</p>
+<p class="article-text">Абсолютно все мои стихи рождались в цифровых устройствах: зачастую в чате "Избранное" Telegram, иногда напрямую в канале, реже в заметках телефона. Бумага для меня воспринимается как обременение: нельзя просто взять и удалить строку. Придётся зачёркивать, переписывать и снова писать. Зачем? Тем более, переносить цифровой текст на сайт или канал куда проще, чем туда же переносить его с бумаги. Из-за этого я считаю себя приверженцем цифрового формата.</p>
+<p class="article-text">Какие-то стихи рождались просто от того, что нужно что-то написать. Например, давно не выходили новые публикации или просто есть желание. Идея появлялась сама: просто нужно вспомнить пережитое сегодня или в последние дни состояние. А иногда стихи рождались "каркасом": в голову спонтанно вползёт строка или выражение, которое мне нравится, я его запишу, а затем вверх и вниз от него выстраиваю строфы.</p>
+<p class="article-text">Часто я прихожу к истинному осознанию известной поговорки "Дома и стены помогают". Со стихами так не работает: когда долго сидишь в четырёх стенах, писать просто не о чем. А даже если есть о чём, то не выходит. По этой причине я отказался от затворничества и хотя бы раз в неделю стараюсь покидать свою берлогу.</p>
+<p class="article-text">И таким образом, во всём описанном мной рождались новые стихи. Какие-то в последствии были подвержены цензуре, какие-то удалены, потому что мне не сумели понравиться, какие-то были забыты, а какие-то публиковать я постеснялся. Но в любом случае, я известен вам как поэт, а значит мои стихи всё-таки кто-то прочитал.</p>
+</div>
+</article>
+</main>
+<!-- Футер аналогичный другим страницам -->
+<footer>
+<div class="footer-links">
+<a href="/">Главная</a>
+<a href="/support">Поддержать</a>
+<a href="/about">О проекте</a>
+<a href="/contact">Связаться</a>
+</div>
+</footer>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+const burger = document.querySelector('.burger-menu');
+const nav = document.querySelector('.nav-links');
+
+if (burger && nav) {
+const toggleMenu = () => {
+nav.classList.toggle('active');
+burger.classList.toggle('active');
+document.body.classList.toggle('no-scroll');
+};
+
+const closeMenu = () => {
+nav.classList.remove('active');
+burger.classList.remove('active');
+document.body.classList.remove('no-scroll');
+};
+
+burger.addEventListener('click', (e) => {
+e.stopPropagation();
+toggleMenu();
+});
+
+document.addEventListener('click', (e) => {
+if (!nav.contains(e.target) && !burger.contains(e.target)) {
+    closeMenu();
+}
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+link.addEventListener('click', closeMenu);
+});
+
+window.addEventListener('resize', () => {
+if (window.innerWidth > 768) {
+    closeMenu();
+}
+});
+}
+});
+</script>
+</html>
