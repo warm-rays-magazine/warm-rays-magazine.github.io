@@ -1,0 +1,46 @@
+# ─── Операционные системы ───
+.DS_Store          # macOS
+Thumbs.db          # Windows
+desktop.ini        # Windows
+
+# ─── Редакторы/IDE ───
+.idea/             # JetBrains IDE
+.vscode/           # VS Code
+.venv/             # Окружение python
+*.suo              # Visual Studio
+*.swp              # Vim
+
+# ─── Веб-разработка ───
+node_modules/      # npm-зависимости
+dist/              # Сборка проекта
+build/             
+.cache/            
+.env               # Переменные окружения
+.env.local         
+
+# ─── Логи и кэш ───
+*.log
+*.cache
+*.tmp
+*.txt
+
+# ─── Системные файлы ───
+__pycache__/       # Python кэш
+*.pyc
+*.py
+
+
+
+# ─── Тестовые данные ───
+/test-reports/
+/coverage/
+/structure/
+/generator/
+
+
+# ─── Служебные js ───
+inject-script.js
+
+# ─── Jupyter файлы ───
+*.json
+*.ipynb

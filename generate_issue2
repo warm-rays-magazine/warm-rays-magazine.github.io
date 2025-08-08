@@ -1,0 +1,152 @@
+import tkinter as tk
+from tkinter import ttk, filedialog
+from datetime import datetime
+import os
+
+class VerseTab(ttk.Frame):
+    def __init__(self, master, notebook):
+        super().__init__(master)
+        self.notebook = notebook
+        
+        # Заголовок стиха
+        tk.Label(self, text="Название стиха:").pack(anchor='w', padx=10, pady=(10,0))
+        self.title_entry = tk.Entry(self, width=50)
+        self.title_entry.pack(padx=10, pady=(0,10), fill='x')
+        
+        # Текст стиха
+        tk.Label(self, text="Текст стиха:").pack(anchor='w', padx=10)
+        self.text_text = tk.Text(self, height=15, wrap='word')
+        self.text_text.pack(padx=10, pady=(0,10), fill='both', expand=True)
+        
+        # Примечание
+        tk.Label(self, text="Примечание (необязательно):").pack(anchor='w', padx=10)
+        self.note_entry = tk.Entry(self, width=50)
+        self.note_entry.pack(padx=10, pady=(0,10), fill='x')
+        
+        # Кнопка удаления вкладки
+        tk.Button(self, text="× Удалить", command=self.delete_tab,
+                 fg='red', relief='flat').pack(side='right', padx=10, pady=5)
+    
+    def delete_tab(self):
+        for i, tab in enumerate(self.notebook.tabs()):
+            if self.notebook.nametowidget(tab) == self:
+                self.notebook.forget(i)
+                break
+
+class IssueGenerator:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Генератор выпусков")
+        self.style = ttk.Style()
+        self.style.configure('TNotebook.Tab', font=('Arial', 10, 'bold'))
+        
+        # Основной контейнер
+        self.main_frame = ttk.Frame(root)
+        self.main_frame.pack(fill='both', expand=True, padx=10, pady=10)
+        
+        # Блок управления
+        control_frame = ttk.Frame(self.main_frame)
+        control_frame.pack(fill='x', pady=5)
+        
+        # Поле названия выпуска
+        tk.Label(control_frame, text="Название выпуска:").pack(side='left', padx=5)
+        self.issue_title = tk.Entry(control_frame, width=40)
+        self.issue_title.pack(side='left', fill='x', expand=True)
+        
+        # Кнопки управления
+        ttk.Button(control_frame, text="+ Добавить стих", 
+                  command=self.add_verse_tab).pack(side='left', padx=10)
+        ttk.Button(control_frame, text="💾 Сохранить выпуск", 
+                  command=self.save_issue).pack(side='right', padx=5)
+        
+        # Вкладки со стихами
+        self.notebook = ttk.Notebook(self.main_frame)
+        self.notebook.pack(fill='both', expand=True)
+        
+        # Первая вкладка по умолчанию
+        self.add_verse_tab()
+        
+    def add_verse_tab(self):
+        tab = VerseTab(self.notebook, self.notebook)
+        self.notebook.add(tab, text=f"Стих {len(self.notebook.tabs())+1}")
+        self.notebook.select(tab)
+    
+    def collect_data(self):
+        data = {
+            'title': self.issue_title.get(),
+            'verses': [],
+            'date': datetime.now().strftime('%d.%m.%Y')
+        }
+        
+        for tab_id in self.notebook.tabs():
+            tab = self.notebook.nametowidget(tab_id)
+            verse_data = {
+                'title': tab.title_entry.get(),
+                'text': tab.text_text.get("1.0", tk.END).strip(),
+                'note': tab.note_entry.get()
+            }
+            data['verses'].append(verse_data)
+        
+        return data
+    
+    def save_issue(self):
+        data = self.collect_data()
+        if not data['title']:
+            tk.messagebox.showerror("Ошибка", "Введите название выпуска!")
+            return
+            
+        save_path = filedialog.asksaveasfilename(
+            defaultextension=".html",
+            filetypes=[("HTML Files", "*.html")],
+            initialfile=f"issue_{datetime.now().strftime('%Y%m%d')}"
+        )
+        
+        if not save_path:
+            return
+        
+        template = f'''<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{data['title']}</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <!-- Хедер как в других страницах -->
+    </header>
+
+    <main>
+        <article class="issue">
+            <h2>{data['title']}</h2>
+            <time>Дата выпуска: {data['date']}</time>
+            <div class="verses-container">'''
+        
+        for verse in data['verses']:
+            template += f'''
+                <div class="verse-card">
+                    <h3>{verse['title']}</h3>
+                    <pre>{verse['text']}</pre>
+                    {f'<p class="note">{verse["note"]}</p>' if verse['note'] else ''}
+                </div>'''
+        
+        template += '''
+            </div>
+        </article>
+    </main>
+    
+    <!-- Футер как в других страницах -->
+</body>
+</html>'''
+        
+        with open(save_path, 'w', encoding='utf-8') as f:
+            f.write(template)
+        
+        os.startfile(os.path.dirname(save_path))
+        self.root.destroy()
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = IssueGenerator(root)
+    root.geometry("800x600")
+    root.mainloop()
