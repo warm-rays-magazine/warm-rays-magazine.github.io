@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /drafts/
+Disallow: /admin.html
+
+# Для GitHub Pages
+Sitemap: https://ваш-юзернейм.github.io/sitemap.xml
+
+# Для Яндекса
+Host: ваш-юзернейм.github.io
