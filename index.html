@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Тёплые лучи рассвета</title>
+<meta content="Тёплые лучи рассвета. Стихи на русском языке. Читать русские стихи. Поэзия на русском языке." name="description"/>
+<link href="/css/styles.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&amp;family=Orbitron:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        .no-scroll {
+            overflow: hidden;
+        }
+    
+    </style>
+<link href="/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicons/apple-touch-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
+<link href="/favicons/apple-touch-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
+<link href="/favicons/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72"/>
+<link href="/favicons/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76"/>
+<link href="/favicons/apple-touch-icon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/favicons/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"/>
+<link href="/favicons/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120"/>
+<link href="/favicons/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144"/>
+<link href="/favicons/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152"/>
+<link href="/favicons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/favicons/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+<link href="/favicons/favicon.ico" rel="icon" type="image/x-icon"/>
+<meta content="#ffffff" name="msapplication-TileColor"/>
+<meta content="/ms-icon-144x144.png" name="msapplication-TileImage"/>
+<meta content="#ffffff" name="theme-color"/>
+
+</link></link></head>
+<body>
+<header>
+<nav>
+<a class="logo-link" href="/">
+<img alt="" class="logo" src="/img/logo1.webp"/>
+</a>
+<button aria-label="Меню" class="burger-menu">
+<span class="burger-line"></span>
+<span class="burger-line"></span>
+<span class="burger-line"></span>
+</button>
+<div class="nav-links">
+<a href="/">Главная</a>
+<a href="/issues">Выпуски</a>
+<a href="/articles">Статьи</a>
+<a href="/about">О проекте</a>
+<a href="/support">Поддержать</a>
+<a class="tg-link" href="https://t.me/warmraysofdawn" target="_blank">
+<img alt="Telegram" class="tg-icon" src="/img/tg-icon.png"/>
+</a>
+</div>
+<!-- Внутри nav после .nav-links -->
+<div class="nav-overlay"></div>
+</nav>
+</header>
+<main>
+<h1 class="cyber-title">Поэзия цифрового рассвета</h1>
+<div class="content">
+<p class="main-text">Современная поэзия на стыке технологий и нравственности.</p>
+<p class="main-text">Нет сомнений в том, что каждый голос уникален. Каждый человек, каждая душа - все мы имеем свои особенности. И в этом кроется некий конфликт: с одной стороны, все мы разные, а значит поладить окончательно у нас не выйдет. С другой стороны, наши разности позволяют нам исследовать себя и других, становиться лучше и совершеннее</p>
+<p class="main-text">Вы, как читатель, тоже отличаетесь от других. У вас свои интересы и предпочтения, свои любимые жанры и авторы. Но с другими вас объединяет желание читать комфортно и иметь возможность читать комфортно в любой момент. Именно поэтому для тех стран, где Telegram находится под угрозой блокировки, было принято решение создать абсолютное зеркало, уникальную библиотеку со всеми стихами. Надеемся, вам она понравится. Просто нажмите на кнопку ниже, и вы сами всё увидите</p>
+<p class="warning"> Важно: сайт размещён на бесплатном хостинге, который может самостоятельно регулировать отношения между собой и вами. Обращаем ваше внимание, что персонал "тёплых лучей рассвета" не собирает о вас никакой конфиденциальной информации и не передаёт её третьим лицам. Продолжая пользоваться сайтом, вы подтверждаете свой отказ от претензий в сторону разработчиков сайта. Если вы переживаете за свою конфиденциальность, свяжитесь с нами. Мы разъясним вам нюансы вашей безопасности.</p>
+<div class="button-container">
+<a class="cyber-button" href="/issues/">Читать выпуски</a>
+</div>
+</div>
+</main>
+<footer>
+<div class="footer-links">
+<a href="/">Главная</a>
+<a href="/support">Поддержать</a>
+<a href="/about">О проекте</a>
+<a href="/contact">Связаться</a>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const burger = document.querySelector('.burger-menu');
+  const nav = document.querySelector('.nav-links');
+  const overlay = document.querySelector('.nav-overlay');
+  const body = document.body;
+  
+  if (!burger || !nav) return;
+  
+  const toggleMenu = () => {
+    const isActive = nav.classList.contains('active');
+    nav.classList.toggle('active', !isActive);
+    burger.classList.toggle('active', !isActive);
+    body.classList.toggle('no-scroll', !isActive);
+    
+    burger.querySelectorAll('.burger-line').forEach((line, index) => {
+      if (!isActive) {
+        if (index === 0) line.style.transform = 'rotate(45deg) translate(5px, 6px)';
+        if (index === 1) line.style.opacity = '0';
+        if (index === 2) line.style.transform = 'rotate(-45deg) translate(5px, -6px)';
+      } else {
+        line.style.transform = '';
+        line.style.opacity = '';
+      }
+    });
+  };
+
+  const closeMenu = () => {
+    nav.classList.remove('active');
+    burger.classList.remove('active');
+    body.classList.remove('no-scroll');
+    burger.querySelectorAll('.burger-line').forEach(line => {
+      line.style.transform = '';
+      line.style.opacity = '';
+    });
+  };
+
+  burger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  overlay && overlay.addEventListener('click', closeMenu);
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('click', (e) => {
+    if (nav.classList.contains('active') && 
+        !nav.contains(e.target) && 
+        !burger.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && nav.classList.contains('active')) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('active')) {
+      closeMenu();
+    }
+  });
+});
+</script>
+</body>

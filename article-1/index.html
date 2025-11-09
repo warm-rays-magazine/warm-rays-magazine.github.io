@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Почему поэзия важна в современном мире?</title>
+<link href="../css/styles.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&amp;family=Orbitron:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        .no-scroll {
+            overflow: hidden;
+        }
+    </style>
+<link href="/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/favicons/apple-touch-icon-57x57.png" rel="apple-touch-icon" sizes="57x57"/>
+<link href="/favicons/apple-touch-icon-60x60.png" rel="apple-touch-icon" sizes="60x60"/>
+<link href="/favicons/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72"/>
+<link href="/favicons/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76"/>
+<link href="/favicons/apple-touch-icon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/favicons/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114"/>
+<link href="/favicons/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120"/>
+<link href="/favicons/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144"/>
+<link href="/favicons/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152"/>
+<link href="/favicons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="/favicons/android-icon-192x192.png" rel="icon" sizes="192x192" type="image/png"/>
+<meta content="#ffffff" name="msapplication-TileColor"/>
+<meta content="#ffffff" name="theme-color"/>
+
+<script>
+        // Эффект матрицы для фона
+        function createMatrixEffect() {
+            const chars = '01アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Правильное получение CSS-переменной
+            const neonColor = getComputedStyle(document.documentElement)
+                .getPropertyValue('--neon')
+                .trim();
+    
+            canvas.style.position = 'fixed';
+            canvas.style.top = 0;
+            canvas.style.left = 0;
+            canvas.style.zIndex = -1;
+            document.body.appendChild(canvas);
+    
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            
+            window.addEventListener('resize', resize);
+            resize();
+    
+            const columns = Math.floor(canvas.width / 20);
+            const drops = Array(columns).fill(0);
+    
+            function draw() {
+                ctx.fillStyle = 'rgba(10, 15, 36, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Исправленная строка с использованием переменной
+                ctx.fillStyle = neonColor;
+                ctx.font = '15px monospace';
+    
+                drops.forEach((y, i) => {
+                    const char = chars[Math.floor(Math.random() * chars.length)];
+                    ctx.fillText(char, i * 20, y);
+                    
+                    if (y > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    } else {
+                        drops[i] = y + 20;
+                    }
+                });
+            }
+    
+            const matrixInterval = setInterval(draw, 50);
+    
+            // Очистка при закрытии страницы
+            window.addEventListener('beforeunload', () => {
+                clearInterval(matrixInterval);
+                canvas.remove();
+            });
+        }
+    
+        window.onload = createMatrixEffect;
+    </script>
+</head>
+<body>
+<header>
+<nav>
+<a class="logo-link" href="/">
+<img alt="Логотип" class="logo" src="/img/logo1.webp"/>
+</a>
+<button aria-label="Меню" class="burger-menu">
+<span class="burger-line"></span>
+<span class="burger-line"></span>
+<span class="burger-line"></span>
+</button>
+<div class="nav-links">
+<a href="/">Главная</a>
+<a href="/issues">Выпуски</a>
+<a href="/articles">Статьи</a>
+<a href="/about">О проекте</a>
+<a href="/support">Поддержать</a>
+<a class="tg-link" href="https://t.me/warmraysofdawn" target="_blank">
+<img alt="Telegram" class="tg-icon" src="/img/tg-icon.png"/>
+</a>
+</div>
+</nav>
+</header>
+<main>
+<article class="cyber-article">
+<h2>Важность современной поэзии</h2>
+<div class="content">
+<p class="article-text"> Каждый день вы просыпаетесь, чистите зубы, завтракаете, ходите на работу. Уже давно в прошлом ручная стирка белья и выпас скота: вы наверняка живёте в квартире с центральным отоплением, горячей водой, стиральной и посудомоечной машиной. Многие думают, что вместе с бытовыми сложностями в прошлом осталась и поэзия. Объясняю, почему нет.</p>
+<p class="article-text"> Во все времена люди занимались творчеством и искусством. Природа человека такова, что его развитие напрямую зависит от его созидательного опыта. К примеру, ребёнок, который никогда не рисовал карандашами, будет глупее и менее развит по сравнению с ребёнком, который рисовал. Почему? Потому что через рисование и созидание второй ребёнок развивался. Но мало уметь только творить: важно ещё и уметь анализировать. Так если второй ребёнок никогда не видел рисунки других детей, то он не сможет узнать, что, например, солнце необязательно рисовать в углу листочка. </p>
+<p class="article-text"> По тем же законам живёт и литература. Что поэт, что писатель, что верлибрист, что драматург – все они тоже созидают. Только в отличии от изобразительного искусства, литератор не может до конца определить видение и влияние своего произведения: тут всё зависит от развития читателя. Поэтому литература получила большее распространение, нежели изобразительное искусство, хотя есть и множество других факторов. </p>
+<p class="article-text"> Но что делает литература сейчас?</p>
+<p class="article-text">Многие по ошибке считают, что современная литература не занимается ничем полезным. Якобы фильмы, музыка и прочее способны заменить всю литературу. На самом деле нет: вчитываясь в литературные строки, вы должны представлять. Чувствовать, осознавать. Благодаря литературным произведениям люди становятся грамотнее и узнают новые слова. С такими людьми общаться приятнее, чем с сельским быдлом.</p>
+</div>
+</article>
+</main>
+<!-- Футер аналогичный другим страницам -->
+<footer>
+<div class="footer-links">
+<a href="/">Главная</a>
+<a href="/support">Поддержать</a>
+<a href="/about">О проекте</a>
+<a href="/contact">Связаться</a>
+</div>
+</footer>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+const burger = document.querySelector('.burger-menu');
+const nav = document.querySelector('.nav-links');
+
+if (burger && nav) {
+const toggleMenu = () => {
+nav.classList.toggle('active');
+burger.classList.toggle('active');
+document.body.classList.toggle('no-scroll');
+};
+
+const closeMenu = () => {
+nav.classList.remove('active');
+burger.classList.remove('active');
+document.body.classList.remove('no-scroll');
+};
+
+burger.addEventListener('click', (e) => {
+e.stopPropagation();
+toggleMenu();
+});
+
+document.addEventListener('click', (e) => {
+if (!nav.contains(e.target) && !burger.contains(e.target)) {
+    closeMenu();
+}
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+link.addEventListener('click', closeMenu);
+});
+
+window.addEventListener('resize', () => {
+if (window.innerWidth > 768) {
+    closeMenu();
+}
+});
+}
+});
+</script>
+</html>
