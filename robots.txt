@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /drafts/
+Disallow: /admin.html
+
+# Для GitHub Pages
+Sitemap: https://warm-rays-magazine.github.io/sitemap.xml
+
+# Для Яндекса
+Host: warm-rays-magazine.github.io

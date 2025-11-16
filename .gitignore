@@ -22,7 +22,7 @@ build/
 *.log
 *.cache
 *.tmp
-*.txt
+/structure/
 
 # ─── Системные файлы ───
 __pycache__/       # Python кэш
